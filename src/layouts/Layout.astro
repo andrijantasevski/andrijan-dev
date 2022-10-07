@@ -2,6 +2,7 @@
 import "../styles/base.css";
 import Fonts from "../components/Fonts.astro";
 import Favicon from "../components/Favicon.astro";
+import Header from "../components/Header.astro";
 
 export interface Props {
   title: string;
@@ -25,7 +26,8 @@ const { title, description } = Astro.props;
     <Fonts />
     <Favicon />
   </head>
-  <body>
+  <body class="dark:bg-gray-900">
+    <Header />
     <slot />
     <style is:global></style>
   </body>
