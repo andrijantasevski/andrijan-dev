@@ -1,0 +1,82 @@
+---
+import "../styles/base.css";
+import Fonts from "../components/Fonts.astro";
+import Favicon from "../components/Favicon.astro";
+import Header from "../components/Header.astro";
+
+const { content } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="author" content={content.author} />
+    <meta name="robots" content="follow, index" />
+    <meta name="description" content={"desc"} />
+    <title>{content.title}</title>
+    <Fonts />
+    <Favicon />
+  </head>
+  <body class="dark:bg-gray-900 dark:text-gray-50">
+    <Header />
+    <main class="w-11/12 lg:w-7/12 2xl:w-5/12 mx-auto py-4">
+      <h1 class="text-4xl font-bold mb-3">{content.title}</h1>
+      <div class="flex items-center gap-2 mb-6">
+        <img
+          class="w-10"
+          src="/photos/portrait-andrijan.png"
+          alt="Andrijan Portrait"
+        />
+        <p>{content.author} · {content.dateUpdated}</p>
+      </div>
+      <article>
+        <slot />
+      </article>
+    </main>
+    <style is:global>
+      article h2,
+      article h3,
+      article h4,
+      article h5,
+      article h6 {
+        @apply mb-2;
+      }
+
+      article p {
+        @apply mb-4 leading-relaxed;
+      }
+
+      article h2 {
+        @apply text-2xl font-bold;
+      }
+
+      article h3 {
+        @apply text-xl font-bold;
+      }
+
+      article h4 {
+        @apply text-lg font-bold;
+      }
+
+      article pre {
+        @apply mb-4 rounded-md border-2 bg-gray-900 p-6 dark:border-gray-700 !important;
+      }
+
+      article code {
+        font-family: "Inter" !important;
+      }
+
+      article blockquote {
+        @apply mb-4 rounded-md border-2 bg-gray-900 p-6
+text-[#c9d1d9] dark:border-gray-700;
+      }
+
+      article blockquote p {
+        @apply mb-0;
+      }
+    </style>
+  </body>
+</html>
