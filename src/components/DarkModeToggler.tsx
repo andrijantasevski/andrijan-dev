@@ -1,20 +1,29 @@
 import { useEffect, useState, useRef } from "react";
 
 export default function DarkModeToggler() {
-  const [darkMode, setDarkMode] = useState(false);
-  const isMounted = useRef(false);
+  const [theme, setTheme] = useState(localStorage.getItem("theme") ?? "light");
+  const [isMounted, setIsMounted] = useState(false);
 
-  function toggleDarkMode(): void {
-    setDarkMode((prevDarkMode) => !prevDarkMode);
-  }
+  const toggleDarkMode = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
 
   useEffect(() => {
-    if (isMounted.current) {
-      document.querySelector("html")?.classList.toggle("dark");
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
     } else {
-      isMounted.current = true;
+      document.documentElement.classList.remove("dark");
     }
-  }, [darkMode]);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <button
@@ -22,7 +31,7 @@ export default function DarkModeToggler() {
       onClick={toggleDarkMode}
       className="rounded-md border-2 bg-gray-200 p-2 transition-all hover:border-gray-400 focus:border-2 dark:border-gray-800 dark:bg-gray-800 dark:hover:border-gray-700"
     >
-      {darkMode ? (
+      {theme === "dark" ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
