@@ -1,0 +1,26 @@
+---
+import BlogCards from "./BlogCards.astro";
+
+const posts = await Astro.glob("../pages/blog/*.mdx");
+const sortedPosts = posts.sort(
+    (a, b) =>
+        new Date(b.frontmatter.date).valueOf() -
+        new Date(a.frontmatter.date).valueOf()
+);
+---
+
+<section class="py-4 text-gray-900 dark:text-gray-50">
+    <div class="w-11/12 lg:w-7/12 2xl:w-5/12 mx-auto">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-2xl lg:text-3xl font-bold">Blog</h2>
+
+            <a
+                href="/blog"
+                class="bg-gray-200 dark:bg-gray-800 py-1 px-3 rounded-md transition-all border-2 hover:border-gray-400 dark:border-gray-900 dark:hover:border-gray-700"
+                >All posts</a
+            >
+        </div>
+
+        <BlogCards posts={sortedPosts} />
+    </div>
+</section>
