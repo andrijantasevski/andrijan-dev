@@ -1,5 +1,5 @@
 ---
-import BlogCards from "./BlogCards.astro";
+import BlogCard from "./BlogCard.astro";
 
 const posts = await Astro.glob("../pages/blog/*.mdx");
 const sortedPosts = posts.sort(
@@ -21,6 +21,17 @@ const sortedPosts = posts.sort(
             >
         </div>
 
-        <BlogCards posts={sortedPosts} />
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {
+                sortedPosts.map((post: any) => {
+                    return (
+                        <BlogCard
+                            blogLink={post.url}
+                            blogTitle={post.frontmatter.title}
+                        />
+                    );
+                })
+            }
+        </div>
     </div>
 </section>
