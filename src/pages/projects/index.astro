@@ -1,0 +1,38 @@
+---
+import ProjectSingle from "../../components/ProjectSingle.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Projects">
+    <section class="py-4 text-gray-900 dark:text-gray-50">
+        <div class="w-11/12 lg:w-7/12 2xl:w-5/12 mx-auto">
+            <div class="mb-6">
+                <h2 class="text-2xl lg:text-3xl font-bold mb-3">Projects</h2>
+                <p>
+                    All the projects I have built by using bleeding edge
+                    technologies.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-6">
+                <ProjectSingle
+                    projectTitle="ELI Centar"
+                    technologiesUsed="Astro · Tailwind · Contentful"
+                    projectDescription="A static website built for a language school"
+                    projectLink="/"
+                    projectGitHub="/"
+                    projectImage="/photos/elicentar-image.png"
+                />
+
+                <ProjectSingle
+                    projectTitle="Vreeeme"
+                    technologiesUsed="Next.js · Tailwind · React"
+                    projectDescription="A weather app built with Next.js"
+                    projectLink="https://vreeeme.vercel.app/"
+                    projectGitHub="https://github.com/andrijantasevski/vreme"
+                    projectImage="/photos/vreeeme.png"
+                />
+            </div>
+        </div>
+    </section>
+</Layout>
