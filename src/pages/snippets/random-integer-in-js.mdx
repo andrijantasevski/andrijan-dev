@@ -1,0 +1,26 @@
+---
+layout: "../../layouts/LayoutBlogSnippets.astro"
+title: Random integer
+author: Andrijan Tasevski
+shortDescription: A concise reference guide for git that helps you set up git and gets you up and running.
+dateUpdated: 11 Oct, 2022
+---
+
+## Generating a random non-inclusive integer
+
+```javascript
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+}    
+```
+## Getting a random inclusive integer
+
+```javascript
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
+}    
+```
