@@ -1,0 +1,11 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import Snippets from "../../components/Snippets";
+
+const snippets = await Astro.glob("../snippets/*.mdx");
+---
+
+<Layout title="Snippets">
+    <Snippets snippetsArr={snippets} client:load />
+</Layout>
