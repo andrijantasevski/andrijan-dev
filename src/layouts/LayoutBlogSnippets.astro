@@ -17,7 +17,7 @@ const { content } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <meta name="author" content={content.author} />
     <meta name="robots" content="follow, index" />
-    <meta name="description" content={"desc"} />
+    <meta name="description" content={content?.shortDescription} />
     <title>{content.title}</title>
     <Fonts />
     <Favicon />
