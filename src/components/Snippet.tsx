@@ -1,4 +1,10 @@
-export default function Snippet({ snippetLink, snippetTitle, snippetDescription }: any) {
+interface Snippet {
+    snippetLink: string | undefined
+    snippetTitle: string
+    snippetDescription: string
+}
+
+export default function Snippet({ snippetLink, snippetTitle, snippetDescription }: Snippet) {
     return (
 
         <a href={snippetLink}
