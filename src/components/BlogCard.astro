@@ -1,7 +1,7 @@
 ---
 export interface Props {
     blogTitle: string;
-    blogLink: string;
+    blogLink: string | undefined;
 }
 
 const { blogTitle, blogLink } = Astro.props;

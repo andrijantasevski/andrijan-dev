@@ -1,7 +1,14 @@
+import type { MDXInstance } from "astro";
 import { useEffect, useState, useRef } from "react";
 import Snippet from "./Snippet";
 
-export default function Snippets(props: any) {
+interface Frontmatter {
+  title: string;
+  shortDescription: string;
+  id: number;
+}
+
+export default function Snippets(props: { snippetsArr: any; }) {
   const allSnippets = useRef(props.snippetsArr);
   const [search, setSearch] = useState("");
   const [filteredSnippets, setFilteredSnippets] = useState(allSnippets.current);
@@ -9,11 +16,11 @@ export default function Snippets(props: any) {
   useEffect(() => {
     setFilteredSnippets(
       allSnippets.current.filter(
-        (snippet: any) =>
-          snippet?.frontmatter.title
+        (snippet: { frontmatter: Frontmatter }) =>
+          snippet.frontmatter.title
             .toLowerCase()
             .includes(search.toLowerCase()) ||
-          snippet?.frontmatter.shortDescription
+          snippet.frontmatter.shortDescription
             .toLowerCase()
             .includes(search.toLowerCase())
       )
@@ -60,7 +67,7 @@ export default function Snippets(props: any) {
           {filteredSnippets.length === 0 ? (
             <p>No snippets.</p>
           ) : (
-            filteredSnippets.map((snippet: any) => (
+            filteredSnippets.map((snippet: { frontmatter: Frontmatter, url: string | undefined }) => (
               <Snippet
                 snippetLink={snippet.url}
                 snippetTitle={snippet.frontmatter.title}

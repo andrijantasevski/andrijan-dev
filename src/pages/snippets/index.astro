@@ -3,7 +3,13 @@ import Layout from "../../layouts/Layout.astro";
 
 import Snippets from "../../components/Snippets";
 
-const snippets = await Astro.glob("../snippets/*.mdx");
+interface Frontmatter {
+    snippetLink: string | undefined;
+    snippetTitle: string;
+    snippetDescription: string;
+}
+
+const snippets = await Astro.glob<Frontmatter>("../snippets/*.mdx");
 ---
 
 <Layout title="Snippets">
