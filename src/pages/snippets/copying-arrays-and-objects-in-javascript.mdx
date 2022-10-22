@@ -1,0 +1,63 @@
+---
+layout: "../../layouts/LayoutBlogSnippets.astro"
+title: Copying arrays and objects
+author: Andrijan Tasevski
+shortDescription: Make shallow or deep copies of arrays or objects in JavaScript
+dateUpdated: 22 Oct, 2022
+id: 6
+---
+
+## Copying arrays
+
+```javascript 
+const arr = [1, 2, 3, 4, 5];
+
+// Copying with the spread operator
+
+const copyOne = [...arr];
+
+// Copying with slice
+
+const copyTwo = arr.slice();
+
+// Copying with map
+
+const copyThree = arr.map((number) => number);
+
+// Copying with Array.from()
+
+const copyFour = Array.from(arr);
+
+// Copying with a for-loop
+
+const copyFive = [];
+
+for (let i = 0; i < arr.length; i++) {
+  copyFive[i] = arr[i];
+}
+
+// Copying with JSON.stringify() and JSON.parse()
+
+const copySix = JSON.parse(JSON.stringify(arr));
+```
+
+## Copying objects
+
+```javascript
+const obj = {
+	name: John,
+	lastName: Doe
+};
+
+// Copying with the spread operator
+
+const copyOne = {...obj};
+
+// Copying with Object.assign()
+
+const copyTwo = Object.assign({}, obj)
+
+// Copying with JSON.stringify() and JSON.parse()
+
+const copyThree = JSON.parse(JSON.stringify(obj));
+```
