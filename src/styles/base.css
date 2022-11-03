@@ -7,7 +7,7 @@
     font-family: "Inter";
     font-style: normal;
     font-weight: 300 900;
-    font-display: optional;
+    font-display: swap;
     src: url("/fonts/inter-variable.woff2") format("woff2-variations");
   }
 
