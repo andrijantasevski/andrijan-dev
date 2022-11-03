@@ -1,0 +1,20 @@
+---
+layout: "../../layouts/LayoutBlogSnippets.astro"
+title: Generate the alphabet
+author: Andrijan Tasevski
+shortDescription: Generate the alphabet with lowercase and uppercase letters in two lines of code
+dateUpdated: 03 Nov, 2022
+id: 8
+---
+
+```javascript
+const lowerCase = [...Array(26)].map((_, i) => String.fromCharCode(i + 97));
+
+const upperCase = lowerCase.map(letter => letter.toUpperCase());
+```
+
+## Useful links
+
+[*String.charCodeAt() - MDN Docs*](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt)
+
+[*String.fromCharCode() - MDN Docs*](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode)

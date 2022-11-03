@@ -6,37 +6,9 @@
   @font-face {
     font-family: "Inter";
     font-style: normal;
-    font-display: optional;
-    font-weight: 100 900;
-    src: url("/fonts/Inter-Light.woff") format("woff"),
-      url("/fonts/Inter-Light.woff2") format("woff2");
-  }
-
-  @font-face {
-    font-family: "Inter";
-    font-style: normal;
-    font-display: optional;
-    font-weight: 400;
-    src: url("/fonts/Inter-Regular.woff") format("woff"),
-      url("/fonts/Inter-Regular.woff2") format("woff2");
-  }
-
-  @font-face {
-    font-family: "Inter";
-    font-style: normal;
-    font-display: optional;
-    font-weight: 500;
-    src: url("/fonts/Inter-Medium.woff") format("woff"),
-      url("/fonts/Inter-Medium.woff2") format("woff2");
-  }
-
-  @font-face {
-    font-family: "Inter";
-    font-style: normal;
-    font-display: optional;
-    font-weight: 700;
-    src: url("/fonts/Inter-Bold.woff") format("woff"),
-      url("/fonts/Inter-Bold.woff2") format("woff2");
+    font-weight: 300 900;
+    font-display: swap;
+    src: url("/fonts/inter-variable.woff2") format("woff2-variations");
   }
 
   html {

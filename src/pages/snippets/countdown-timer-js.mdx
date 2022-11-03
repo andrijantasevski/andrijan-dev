@@ -1,0 +1,33 @@
+---
+layout: "../../layouts/LayoutBlogSnippets.astro"
+title: Countdown timer
+author: Andrijan Tasevski
+shortDescription: A simple countdown timer built in JavaScript
+dateUpdated: 03 Nov, 2022
+id: 9
+---
+
+```javascript
+function initTimer(seconds) {
+    let time = seconds;
+
+    timerID = setInterval(updateTimer, 1000);
+
+    function updateTimer() {
+        const minutes = Math.floor(time / 60);
+        const seconds = time % 60;
+
+        const countdown = `${minutes < 10 ? "0" + minutes : minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+
+        if (time === 0) {
+            clearInterval(timerID);
+        }
+
+        console.log(countdown);
+
+        time--;
+    }
+}
+
+initTimer(180);
+```
