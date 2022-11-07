@@ -1,0 +1,26 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="404 - Not found">
+    <section class="py-4 text-gray-900 dark:text-gray-50">
+        <div class="w-11/12 lg:w-7/12 2xl:w-5/12 mx-auto">
+            <div class="grid grid-cols-1 gap-3">
+                <h2 class="text-2xl lg:text-3xl font-bold">
+                    The URL was not found
+                </h2>
+                <p class="mb-3">
+                    The URL that you have entered is either wrong or does not
+                    exist.
+                </p>
+                <div class="flex justify-center items-center w-full">
+                    <a
+                        href="/"
+                        class="bg-gray-200 dark:bg-gray-800 py-2 px-3 rounded-md transition-all border-2 hover:border-gray-400 dark:border-gray-900 dark:hover:border-gray-700"
+                        >Return to home</a
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>

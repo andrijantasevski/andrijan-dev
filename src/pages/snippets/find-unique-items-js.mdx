@@ -1,0 +1,52 @@
+---
+layout: "../../layouts/LayoutBlogSnippets.astro"
+title: Unique items in an array
+author: Andrijan Tasevski
+shortDescription: Find unique items in an array with a JavaScript or TypeScript function
+dateUpdated: 17 Oct, 2022
+id: 5
+---
+
+## JavaScript
+
+```javascript 
+function findUniqueElements(arr =  []) {
+    let uniqueItems = [];
+
+    arr.forEach(item => {
+        if (uniqueItems.indexOf(item) === -1) {
+            uniqueItems.push(item);
+        }
+    })
+
+    return uniqueItems;
+}
+
+findUniqueElements([1, 1, 2, 3]); // Result: [1, 2, 3]
+```
+
+## TypeScript
+
+```typescript 
+function findUniqueElements<T>(arr: T[]) {
+    let uniqueItems: T[] = [];
+
+    arr.forEach(item => {
+        if (uniqueItems.indexOf(item) === -1) {
+            uniqueItems.push(item);
+        }
+    })
+
+    return uniqueItems;
+}
+
+findUniqueElements([1, 1, 2, 3]); // Result: [1, 2, 3]
+```
+
+## How it works
+
+We loop through the array we pass as an argument.
+
+If the **method indexOf** cannot find the index of the current element of the iteration, it will return **-1**. This implies that the element does not exist in the array we are looping through.
+
+This would satisfy our condition and push the item to the **uniqueItems array**.

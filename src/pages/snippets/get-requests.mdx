@@ -1,0 +1,83 @@
+---
+layout: "../../layouts/LayoutBlogSnippets.astro"
+title: GET requests
+author: Andrijan Tasevski
+shortDescription: GET requests with fetch API, async functions and axios in JavaScript
+dateUpdated: 14 Oct, 2022
+id: 3
+---
+
+## Fetch API
+
+```javascript
+fetch("https://catfact.ninja/fact")
+  .then((res) => res.json())
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
+```
+
+## Async function
+
+```javascript
+async function fetchData() {
+  // Code to execute before fetching data
+  try {
+    const res = await fetch("https://catfact.ninja/fact");
+
+    if (!res.ok) {
+      throw Error(res.statusText);
+    }
+
+    const data = await res.json();
+
+    console.log(data);
+  } catch (err) {
+    // Handle errors here
+    console.log(err);
+  } finally {
+    // Code to execute regardless of promise result
+  }
+}
+
+fetchData();
+```
+
+## Axios
+
+```javascript
+axios
+  .get("https://catfact.ninja/fact")
+  .then((res) => {
+    // handle success
+    console.log(response);
+  })
+  .catch((error) => {
+    // handle error
+    console.log(error);
+  })
+  .then(() => {
+    // always executed
+  });
+```
+
+### Usage of axios
+
+We can use axios both in the **browser** and in a **node environment**.
+
+To use axios in the browser, we include the following script in our HTML:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+```
+
+To use axios in a node environment, we run the following command in a terminal:
+
+```bash
+npm i axios
+```
+
+Then, we import axios:
+
+```javascript
+import axios from "axios";
+```

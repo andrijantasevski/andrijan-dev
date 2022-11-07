@@ -1,0 +1,426 @@
+---
+layout: "../../layouts/LayoutBlogSnippets.astro"
+title: JavaScript Reference Guide
+author: Andrijan Tasevski
+shortDescription: A JavaScript reference guide from A to Z.
+dateUpdated: 26 Aug, 2022
+draft: true
+---
+
+## Declaring variables
+
+### let
+
+To declare a variable whose value can be reassigned later, we use **let**:
+
+```javascript
+// Declare a variable
+let firstName = "John";
+
+// Reassign the value
+firstName = "Mark";
+```
+
+### const
+
+To declare a variable whose value **cannot** be reassigned later, we use **const**:
+
+```javascript
+// Declare a variable
+const firstName = "John";
+
+// Reassign the value
+firstName = "Mark";
+```
+
+After writing the code above, we get the following **error**, implying that we have already declared a variable with the same name:
+
+_Uncaught SyntaxError: Identifier 'firstName' has already been declared_
+
+To solve the problem, we need to change the name of the variable:
+
+```javascript
+// Valid declaration of variables with const
+const firstName = "John";
+
+const newFirstName = "Mark";
+```
+
+### var
+
+When we declare a variable with var, it is added to the **global window object**, which means that we will be able to access the variable within any scope. For this reason, we should avoid using var and replace it with let and const.
+
+However, we can declare a variable with var the following way:
+
+```javascript
+// Declare a variable
+var firstName = "John";
+
+// Reassign the value
+firstName = "John";
+```
+
+## Initialization of variables
+
+We cannot read or perform any operation on variables before they are declared. For example,
+
+```javascript
+console.log(firstName);
+
+const firstName = "John";
+```
+
+If we do this, we would get the following error:
+
+_Uncaught ReferenceError: Cannot access 'firstName' before initialization._
+
+To fix it, we need to declare the variable first and then use it in console.log()
+
+```javascript
+const firstName = "John";
+
+console.log(firstName);
+```
+
+_Functions, for example, can be accessed before they are declared. In fact, they can be accessed anywhere in the script. This is called HOISTING._
+
+## Naming variables
+
+We typically use **camel case** in JavaScript. This means that we write all the words together, where the first letter of the first word is small and all the subsequent first letters of each word are capitalized.
+
+An example of camel-cased text would be **nameOfFile**.
+
+### Rules for naming variables in JS
+
+The name of the variable can consist of **numbers**, **text** or the symbols **\_** or **$**.
+
+```javascript
+const $hello2 = "Hello 2";
+```
+
+We **cannot** use a number at the **beginning** of a variable.
+
+```javascript
+// Incorrect
+const 2hello = "Hello 2";
+
+// Correct
+const hello2 = "Hello 2";
+```
+
+Variables are **case sensitive**.
+
+```javascript
+// These are two different variables
+const hello = "Hello";
+
+const HELLO = "Hello";
+```
+
+We should stick to English when naming variables (and in programming in general), as everyone should be able to understand us. Using other languages will not cause any errors, but we should nonetheless stick to English.
+
+### Reserved names for variables
+
+Some words are reserved and cannot be used as names for variables because they are typically used for something else in JavaScript.
+
+For example, **let, const, return, number, function** are reserved names among many others.
+
+### Uppercase const(ants)
+
+We typically use uppercase with constants for values that are difficult to remember and known prior to execution.
+
+```javascript
+// Prior to creating a quiz, we know that the maximum attempts are 4 and the maximum points are 100
+const MAX_ATTEMPTS = 4;
+
+const MAX_POINTS = 100;
+```
+
+> 💡 Variables should be _concise_, _descriptive_ and written in _camelCase_
+
+## Data types
+
+The value of a variable always needs to be of a certain data type.
+
+Data types in JavaScript can be **primitives** (primitive type) or **objects** (reference type).
+
+**Primitive data types** in JavaScript are: **number**, **string**, **boolean**, **undefined**, **null**, **symbol**, **BigInt**.
+
+**Objects** or **reference data types** are: **arrays**, **objects**, **functions**.
+
+### Checking the type of data with JavaScript
+
+To check the data type of the value of the variable, we can use **typeof**:
+
+```javascript
+const age = 24;
+
+typeof age; // The result returned should be "number"
+```
+
+## Text (strings)
+
+A text string in JavaScript must always be wrapped in quotes/backticks.
+
+We can use single or double quotes, we just need to be consistent in using them.
+
+```javascript
+// Both are correct. It is a matter of personal preference.
+const firstName = "Andrijan";
+
+const lastName = "Tasevski";
+```
+
+### Nested quotes
+
+We need to use single quotes when they are nested in double quotes and vice versa (double quotes, when they are nested in single quotes).
+
+```html
+<!-- In this HTML element, we need to use single quotes when they are nested in double quotes. And vice versa, we need to use double quotes if they are nested in single quotes. -->
+<button onclick="alert('Button clicked!')"></button>
+```
+
+### String concatenation
+
+To concatenate (connect together) two or more strings together, we use the **+ operator**.
+
+```javascript
+const age = 25;
+
+const Andrijan = "I am Andrijan and I am" + " " + age + " " + "years old";
+
+console.log(Andrijan);
+```
+
+### Template literals
+
+We can use backticks to declare **template literals**.
+
+```javascript
+// Text string with quotes
+let textString = "Hello World!";
+
+// Template literal
+let templateLiteral = `Template Literal`;
+```
+
+Template literals are great because they offer extended functionality as opposed to regular text strings with quotes. Namely, we can include **variables** and **expressions** in our text strings. This means that we do not need to concatenate strings like before and use empty strings for spaces.
+
+To include variables or expressions, we need to wrap them as in the example below:
+
+```javascript
+const firstName = "Andrijan";
+
+const lastName = "Tasevski";
+
+// We include variables and an expression (20 + 4)
+const Andrijan = `I am ${firstName} ${Tasevski} and I am ${20 + 4} years old.`;
+
+console.log(Andrijan);
+```
+
+### Converting different values to strings
+
+To convert different values to strings, we use the **String() method**:
+
+```javascript
+// Converting a number to a string
+let age = 25;
+
+age = String(age); // Result should be "25"
+
+// Converting a boolean to a string
+let isLoggedIn = true;
+
+isLoggedIn = String(isLoggedIn); // Result should be "true"
+```
+
+### Length of string
+
+To get the length of a string, we use the property **length**:
+
+```javascript
+let name = "Ann";
+
+console.log(name.length); // Result should be 3;
+
+// If we add whitespace after the name that is also counted
+name = "Ann ";
+
+console.log(name.length); // Result should be 4;
+```
+
+### Extracting part of a string
+
+To extract part of a string, we can use the method **slice()**
+
+Depending on the arguments we enter in the method, we get different results:
+
+```javascript
+slice(); // We get a copy of the original string/array.
+
+slice(start); // We tell the method from which position to extract the elements from the string/array. The end position is not specified, which means that all the elements till the end will be copied as well.
+
+slice(start, end); // We tell the method from which position to extract the elements from the array and at which position it should end.
+```
+
+With actual examples:
+
+```javascript
+// Making a copy
+let name = "Andrijan";
+
+let newName = name.slice(); // We create a copy of the name variable. Whatever changes we make to the newName variable will not affect the original name one.
+
+// Copying from position X without specifying the end
+console.log(name.slice(1)); // Result should be "ndrijan"
+
+// Copying from position X and specifying the end
+console.log(name.slice(0, 5)); // Result should be "Andri"
+
+// Copy from position -X
+console.log(name.slice(-6)); // Result should be "drijan"
+```
+
+We can also use the **substring()** and **substr()** methods to achieve similar results. However, slice() is easier to work with.
+
+> 💡 Arrays and strings are zero-based, which means that we start counting from 0 and not 1. For example, in the string "Andrijan" - A is at position 0.
+
+### Replacing part of a string
+
+To replace a part of a string with some other text, we can use the method **replace()**.
+
+```javascript
+// The method takes two arguments: the pattern/item we want to replace and its replacement as the second argument
+replace(pattern, replacement);
+
+// Replace John with Jon in the variable name
+let name = "John Doe";
+
+let newName = name.replace("John", "Jon");
+
+console.log(name, newName); // Result should be "John Doe" "Jon Doe"
+```
+
+> 💡 replace() **does not mutate** the original string.
+>
+> replace() returns a **new string**.
+>
+> replace() replaces only the **first match**.
+
+## Numbers
+
+Numbers in JavaScript can be either **integers** (5) or **floating point numbers** (5.765).
+
+```javascript
+// Integer
+let number = 45;
+
+// Floating point number
+number = 45.124;
+```
+
+### Special numeric values
+
+Apart from integers and floating point numbers, there are special numeric values in JavaScript:
+
+**Infinity**
+
+```javascript
+// We get infinity when we divide a number by 0
+
+1 / 0; // Infinity
+```
+
+**NaN (Not a Number)** is a computational error. It is a result of an incorrect or undefined mathematical operation:
+
+```javascript
+// We cannot divide a string with a number
+const age = "5353" / 141;
+
+console.log(age);
+```
+
+### Math operators
+
+These are the available math operators in JavaScript:
+
+**Addition _(+)_**
+
+**Subtraction _(-)_**
+
+**Multiplication _(\*)_**
+
+**Division (_/_)**
+
+**Remainder (_%_)**
+
+**Exponentiation** _(\*\*)_
+
+Some examples for each operator:
+
+```javascript
+// Addition
+4 + 2; // = 6
+
+//Subtraction
+4 - 2; // = 2
+
+// Multiplication
+4 * 2; // = 8
+
+// Division
+4 / 2; // = 2
+
+// Remainder
+4 % 2; // = 0
+
+// Exponentiation
+4 ** 2; // 16
+```
+
+### Converting strings to numbers
+
+parseInt();
+parseFloat();
+
+Number();
+
+_We do not use quotation marks when we declare numbers or use them as our value._
+
+## Boolean
+
+The boolean data type can have only two values: **true** or **false**.
+
+```
+const loggedIn = true;
+const loggedOut = false;
+```
+
+The boolean data type can be a **result of a comparison**:
+
+```
+const age18 = 18 > 17;
+console.log(age18); // true
+```
+
+## Null
+
+## Undefined
+
+## Array
+
+## Object
+
+## Dynamic typing in JavaScript
+
+Unlike other programming languages where the variables are bound to a certain data type, in JavaScript, the variables are not bound to a data type, as the data type can change according to the value it is assigned.
+
+This is why we say that JavaScript is a **dynamically typed language**.
+
+```
+// First age is declared as a text string
+let age = "twenty";
+// Then, age is redeclared as a number
+age = 20;
+```

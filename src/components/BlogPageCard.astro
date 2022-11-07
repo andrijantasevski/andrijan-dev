@@ -1,0 +1,27 @@
+---
+export interface Props {
+    blogTitle: string;
+    blogLink: string | undefined;
+    blogDate: string;
+    shortDescription: string;
+}
+
+const { blogTitle, blogLink, blogDate, shortDescription } = Astro.props;
+---
+
+<div
+    class="border-2 border-gray-200 dark:border-gray-700 rounded-md p-4 flex flex-col justify-between gap-4"
+>
+    <div class="lg:flex justify-between items-center">
+        <p class="text-xl font-medium mb-1">
+            <a href={blogLink}>{blogTitle}</a>
+        </p>
+        <p class="text-sm text-gray-600 dark:text-gray-400">{blogDate}</p>
+    </div>
+
+    <p class="text-gray-600 dark:text-gray-400">
+        {shortDescription}
+    </p>
+
+    <p><a href={blogLink}>Read post &rightarrow;</a></p>
+</div>

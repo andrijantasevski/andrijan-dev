@@ -1,0 +1,107 @@
+---
+layout: "../../layouts/LayoutBlogSnippets.astro"
+title: POST requests
+author: Andrijan Tasevski
+shortDescription: POST requests with fetch API, async functions and axios in JavaScript
+dateUpdated: 14 Oct, 2022
+id: 4
+---
+
+## Fetch API
+
+```javascript
+fetch("https://jsonplaceholder.typicode.com/posts", {
+  method: "POST",
+  body: JSON.stringify({
+    title: "Title",
+    body: "Body",
+    userId: 2,
+  }),
+  headers: {
+    "Content-type": "application/json",
+  },
+})
+  .then((res) => res.json())
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
+```
+
+## Async function
+
+```javascript
+async function postData() {
+  // Code to execute before fetching data
+  try {
+    const res = await fetch("https://jsonplaceholder.typicode.com/psts", {
+      method: "POST",
+      body: JSON.stringify({
+        title: "Title",
+        body: "Body",
+        userId: 2,
+      }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+
+    if (!res.ok) {
+      throw Error(res.statusText);
+    }
+
+    const data = await res.json();
+
+    console.log(data);
+  } catch (err) {
+    // Handle errors here
+    console.log(err);
+  } finally {
+    // Code to execute regardless of promise result
+  }
+}
+
+postData();
+```
+
+## Axios
+
+```javascript
+axios
+  .post("https://jsonplaceholder.typicode.com/posts", {
+    title: "Title",
+    body: "Body",
+    userId: 2,
+  })
+  .then((res) => {
+    // handle success
+    console.log(res);
+  })
+  .catch((err) => {
+    // handle error
+    console.log(err);
+  })
+  .then(() => {
+    // always executed
+  });
+```
+
+### Usage of axios
+
+We can use axios both in the **browser** and in a **node environment**.
+
+To use axios in the browser, we include the following script in our HTML:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+```
+
+To use axios in a node environment, we run the following command in a terminal:
+
+```bash
+npm i axios
+```
+
+Then, we import axios:
+
+```javascript
+import axios from "axios";
+```

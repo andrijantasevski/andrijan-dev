@@ -1,0 +1,41 @@
+---
+layout: "../../layouts/LayoutBlogSnippets.astro"
+title: Search in JS
+author: Andrijan Tasevski
+shortDescription: Implement a loose or strict search in JavaScript
+dateUpdated: 12 Oct, 2022
+id: 2
+---
+
+## Loose search
+
+```javascript
+const arr = [
+  { name: "John Mulaney" },
+  { name: "Bill Burr" },
+  { name: "Tom Segura" },
+];
+
+const query = "John Mulaney";
+
+const filteredArr = arr.filter((item) =>
+  item.name.toLowerCase().includes(query.toLowerCase())
+); // [{name: "John Mulaney"}]
+```
+
+## Strict search
+
+```javascript
+const arr = [
+  { name: "John Mulaney" },
+  { name: "Bill Burr" },
+  { name: "Tom Segura" },
+];
+
+const query = "John Mulaney";
+
+const filteredArr = arr.filter(
+  (item) =>
+    query.toLowerCase() === item.name.toLowerCase().substring(0, query.length)
+); // [{name: "John Mulaney"}]
+```
