@@ -4,6 +4,7 @@ title: JavaScript Reference Guide
 author: Andrijan Tasevski
 shortDescription: A JavaScript reference guide from A to Z.
 dateUpdated: 26 Aug, 2022
+draft: true
 ---
 
 ## Declaring variables
@@ -31,6 +32,7 @@ const firstName = "John";
 // Reassign the value
 firstName = "Mark";
 ```
+
 After writing the code above, we get the following **error**, implying that we have already declared a variable with the same name:
 
 _Uncaught SyntaxError: Identifier 'firstName' has already been declared_
@@ -81,7 +83,6 @@ console.log(firstName);
 ```
 
 _Functions, for example, can be accessed before they are declared. In fact, they can be accessed anywhere in the script. This is called HOISTING._
-
 
 ## Naming variables
 
@@ -154,7 +155,7 @@ To check the data type of the value of the variable, we can use **typeof**:
 ```javascript
 const age = 24;
 
-typeof age // The result returned should be "number"
+typeof age; // The result returned should be "number"
 ```
 
 ## Text (strings)
@@ -167,7 +168,7 @@ We can use single or double quotes, we just need to be consistent in using them.
 // Both are correct. It is a matter of personal preference.
 const firstName = "Andrijan";
 
-const lastName = 'Tasevski';
+const lastName = "Tasevski";
 ```
 
 ### Nested quotes
@@ -232,7 +233,6 @@ age = String(age); // Result should be "25"
 let isLoggedIn = true;
 
 isLoggedIn = String(isLoggedIn); // Result should be "true"
-
 ```
 
 ### Length of string
@@ -242,12 +242,12 @@ To get the length of a string, we use the property **length**:
 ```javascript
 let name = "Ann";
 
-console.log(name.length) // Result should be 3;
+console.log(name.length); // Result should be 3;
 
 // If we add whitespace after the name that is also counted
-name = "Ann "
+name = "Ann ";
 
-console.log(name.length) // Result should be 4;
+console.log(name.length); // Result should be 4;
 ```
 
 ### Extracting part of a string
@@ -257,11 +257,11 @@ To extract part of a string, we can use the method **slice()**
 Depending on the arguments we enter in the method, we get different results:
 
 ```javascript
-slice() // We get a copy of the original string/array.
+slice(); // We get a copy of the original string/array.
 
-slice(start) // We tell the method from which position to extract the elements from the string/array. The end position is not specified, which means that all the elements till the end will be copied as well.
+slice(start); // We tell the method from which position to extract the elements from the string/array. The end position is not specified, which means that all the elements till the end will be copied as well.
 
-slice(start, end) // We tell the method from which position to extract the elements from the array and at which position it should end.
+slice(start, end); // We tell the method from which position to extract the elements from the array and at which position it should end.
 ```
 
 With actual examples:
@@ -273,13 +273,13 @@ let name = "Andrijan";
 let newName = name.slice(); // We create a copy of the name variable. Whatever changes we make to the newName variable will not affect the original name one.
 
 // Copying from position X without specifying the end
-console.log(name.slice(1)) // Result should be "ndrijan"
+console.log(name.slice(1)); // Result should be "ndrijan"
 
 // Copying from position X and specifying the end
-console.log(name.slice(0, 5)) // Result should be "Andri"
+console.log(name.slice(0, 5)); // Result should be "Andri"
 
 // Copy from position -X
-console.log(name.slice(-6)) // Result should be "drijan"
+console.log(name.slice(-6)); // Result should be "drijan"
 ```
 
 We can also use the **substring()** and **substr()** methods to achieve similar results. However, slice() is easier to work with.
@@ -292,22 +292,21 @@ To replace a part of a string with some other text, we can use the method **repl
 
 ```javascript
 // The method takes two arguments: the pattern/item we want to replace and its replacement as the second argument
-replace(pattern, replacement)
+replace(pattern, replacement);
 
 // Replace John with Jon in the variable name
 let name = "John Doe";
 
 let newName = name.replace("John", "Jon");
 
-console.log(name, newName) // Result should be "John Doe" "Jon Doe"
+console.log(name, newName); // Result should be "John Doe" "Jon Doe"
 ```
 
-> 💡 replace() **does not mutate** the original string. 
+> 💡 replace() **does not mutate** the original string.
 >
 > replace() returns a **new string**.
 >
 > replace() replaces only the **first match**.
-
 
 ## Numbers
 
@@ -318,8 +317,9 @@ Numbers in JavaScript can be either **integers** (5) or **floating point numbers
 let number = 45;
 
 // Floating point number
-number = 45.124
+number = 45.124;
 ```
+
 ### Special numeric values
 
 Apart from integers and floating point numbers, there are special numeric values in JavaScript:
@@ -329,7 +329,7 @@ Apart from integers and floating point numbers, there are special numeric values
 ```javascript
 // We get infinity when we divide a number by 0
 
-1 / 0 // Infinity
+1 / 0; // Infinity
 ```
 
 **NaN (Not a Number)** is a computational error. It is a result of an incorrect or undefined mathematical operation:
@@ -340,6 +340,7 @@ const age = "5353" / 141;
 
 console.log(age);
 ```
+
 ### Math operators
 
 These are the available math operators in JavaScript:
@@ -348,36 +349,35 @@ These are the available math operators in JavaScript:
 
 **Subtraction _(-)_**
 
-**Multiplication _(*)_**
+**Multiplication _(\*)_**
 
 **Division (_/_)**
 
 **Remainder (_%_)**
 
-**Exponentiation** _(**)_
+**Exponentiation** _(\*\*)_
 
 Some examples for each operator:
 
 ```javascript
 // Addition
-4 + 2 // = 6
+4 + 2; // = 6
 
 //Subtraction
-4 - 2 // = 2
+4 - 2; // = 2
 
-// Multiplication 
-4 * 2  // = 8
+// Multiplication
+4 * 2; // = 8
 
 // Division
-4 / 2 // = 2
+4 / 2; // = 2
 
 // Remainder
-4 % 2 // = 0
+4 % 2; // = 0
 
 // Exponentiation
-4 ** 2 // 16
+4 ** 2; // 16
 ```
-
 
 ### Converting strings to numbers
 
@@ -386,11 +386,7 @@ parseFloat();
 
 Number();
 
-
-
 _We do not use quotation marks when we declare numbers or use them as our value._
-
-
 
 ## Boolean
 
