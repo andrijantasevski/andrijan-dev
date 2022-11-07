@@ -3,39 +3,37 @@ import Layout from "../../layouts/Layout.astro";
 import BlogPageCard from "../../components/BlogPageCard.astro";
 
 const posts = await Astro.glob("./*.mdx");
-const sortedPosts = posts.sort(
+const sortedPosts = posts
+  .filter((post) => !post.frontmatter.draft)
+  .sort(
     (a, b) =>
-        new Date(b.frontmatter.dateUpdated).valueOf() -
-        new Date(a.frontmatter.dateUpdated).valueOf()
-);
+      new Date(b.frontmatter.dateUpdated).valueOf() -
+      new Date(a.frontmatter.dateUpdated).valueOf()
+  );
 ---
 
 <Layout title="Blog">
-    <section class="py-4 text-gray-900 dark:text-gray-50">
-        <div class="w-11/12 lg:w-7/12 2xl:w-5/12 mx-auto">
-            <div class="mb-6">
-                <h2 class="text-2xl lg:text-3xl font-bold mb-3">Blog</h2>
-                <p>
-                    I enjoy learning new web technologies by writing about them.
-                </p>
-            </div>
+  <section class="py-4 text-gray-900 dark:text-gray-50">
+    <div class="w-11/12 lg:w-7/12 2xl:w-5/12 mx-auto">
+      <div class="mb-6">
+        <h2 class="text-2xl lg:text-3xl font-bold mb-3">Blog</h2>
+        <p>I enjoy learning new web technologies by writing about them.</p>
+      </div>
 
-            <div class="grid grid-cols-1 gap-6">
-                {
-                    posts.map((post) => {
-                        return (
-                            <BlogPageCard
-                                blogLink={post.url}
-                                blogTitle={post.frontmatter.title}
-                                blogDate={post.frontmatter.dateUpdated}
-                                shortDescription={
-                                    post.frontmatter.shortDescription
-                                }
-                            />
-                        );
-                    })
-                }
-            </div>
-        </div>
-    </section>
+      <div class="grid grid-cols-1 gap-6">
+        {
+          sortedPosts.map((post) => {
+            return (
+              <BlogPageCard
+                blogLink={post.url}
+                blogTitle={post.frontmatter.title}
+                blogDate={post.frontmatter.dateUpdated}
+                shortDescription={post.frontmatter.shortDescription}
+              />
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
 </Layout>
