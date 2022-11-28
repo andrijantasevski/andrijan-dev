@@ -5,11 +5,14 @@ import Snippet from "./Snippet";
 interface Frontmatter {
   title: string;
   shortDescription: string;
-  id: number;
 }
 
-export default function Snippets(props: { snippetsArr: any; }) {
-  const allSnippets = useRef(props.snippetsArr);
+interface Props {
+  snippetsArr: MDXInstance<Frontmatter>[];
+}
+
+const Snippets: React.FC<Props> = ({ snippetsArr }) => {
+  const allSnippets = useRef(snippetsArr);
   const [search, setSearch] = useState("");
   const [filteredSnippets, setFilteredSnippets] = useState(allSnippets.current);
 
@@ -67,12 +70,12 @@ export default function Snippets(props: { snippetsArr: any; }) {
           {filteredSnippets.length === 0 ? (
             <p>No snippets.</p>
           ) : (
-            filteredSnippets.map((snippet: { frontmatter: Frontmatter, url: string | undefined }) => (
+            filteredSnippets.map((snippet: { frontmatter: Frontmatter, url: string | undefined }, idx) => (
               <Snippet
                 snippetLink={snippet.url}
                 snippetTitle={snippet.frontmatter.title}
                 snippetDescription={snippet.frontmatter.shortDescription}
-                key={snippet.frontmatter.id}
+                key={idx}
               />
             ))
           )}
@@ -81,3 +84,5 @@ export default function Snippets(props: { snippetsArr: any; }) {
     </section>
   );
 }
+
+export default Snippets;
