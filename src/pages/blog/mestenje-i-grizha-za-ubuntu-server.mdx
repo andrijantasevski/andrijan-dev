@@ -652,7 +652,65 @@ $ sudo apt install fail2ban
 $ sudo service fail2ban start
 ```
 
-## Местење на node, npm со NVMe
+## Местење на node со nvm (node version manager)
+
+Прво правиме надоградување на системот со **sudo apt update** и **sudo apt upgrade**:
+
+```bash
+$ sudo apt update
+
+# Ја внесуваме лозинката
+
+$ sudo apt upgrade
+
+# Даваме дозвола со y ако бара системот
+```
+
+Го инсталираме **cURL** што се користи за спуштање на содржини од интернет преку command line:
+
+```bash
+$ sudo apt-get install curl
+```
+
+Го инсталираме NVM што значи Node Version Manager. Со NVM можеме слободно да ја менуваме верзијата на Node што сакаме да ја користиме, затоа што различни проекти и алатки функционираат само со одредена верзија на Node.
+
+```bash
+# Ја внесуваме следнава команда и го инсталираме nvm
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+```
+
+Проверуваме која верзија на node ја имаме инсталирано со командата nvm ls (nvm list). Не треба да имаме ниту една верзија на Node инсталирана.
+
+```bash
+$ nvm ls
+
+# Ако добиеме command not found, тогаш го ресетираме серверот со reboot командата.
+
+# Инаку треба да ги добиеме следниве линии на код, ако се функционира
+
+            N/A
+iojs -> N/A (default)
+node -> stable (-> N/A) (default)
+unstable -> N/A (default)
+```
+
+За да ја инсталираме LTS верзијата (најчесто се користи во production апликации) на Node пишуваме nvm install –lts
+
+```bash
+$ nvm install --lts
+
+Installing latest LTS version.
+Downloading and installing node v18.12.1...
+Downloading https://nodejs.org/dist/v18.12.1/node-v18.12.1-linux-x64.tar.xz...
+################################################################################################## 100.0%
+Computing checksum with sha256sum
+Checksums matched!
+Now using node v18.12.1 (npm v8.19.2)
+Creating default alias: default -> lts/* (-> v18.12.1)
+```
+
+## Местење на git
 
 ## Инсталирање на pm2 и користење на pm2
 
