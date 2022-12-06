@@ -1,0 +1,60 @@
+---
+layout: "../../layouts/LayoutBlogSnippets.astro"
+title: Create an element n-amount of times in React
+author: Andrijan Tasevski
+shortDescription: Create an element n-amount of times in React in several different ways
+dateUpdated: 28 Nov, 2022
+---
+
+## Simplest and most straight-forward method
+
+```jsx
+import { useState } from "react";
+
+const App: React.FC = () => {
+  const [count, setCount] = useState(10);
+  return (
+    <div>
+      {[...Array(count)].map((_, i) => <div key={i}>{i}</div>)}
+
+      {/* Alternative */}
+      {Array.from({ length: count }, (_, i) => <div key={i}>{i}</div>)}
+    </div>
+  )
+}
+
+export default App;
+```
+
+## For-loop 
+
+```jsx
+import { useState } from "react";
+
+const App: React.FC = () => {
+  const [count, setCount] = useState(10);
+  const elements = [];
+  const elements2 = [];
+
+  // Option 1
+
+  for (let i = 0; i < count; i++) {
+    elements.push(<div key={i}>{i}</div>)
+  }
+
+  // Option 2
+
+  for (let i = 0; i < count; i++) {
+    elements2.push(i);
+  }
+
+  return (
+    <div>
+      {elements}
+      {elements2.map(((_, i) => <div key={i}>{i}</div>))}
+    </div>
+  )
+}
+
+export default App;
+```

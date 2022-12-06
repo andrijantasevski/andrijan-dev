@@ -1,10 +1,10 @@
-interface Snippet {
+interface Props {
     snippetLink: string | undefined
     snippetTitle: string
     snippetDescription: string
 }
 
-export default function Snippet({ snippetLink, snippetTitle, snippetDescription }: Snippet) {
+const Snippet: React.FC<Props> = ({ snippetLink, snippetTitle, snippetDescription }) => {
     return (
 
         <a href={snippetLink}
@@ -15,3 +15,5 @@ export default function Snippet({ snippetLink, snippetTitle, snippetDescription 
         </a>
     )
 }
+
+export default Snippet;
