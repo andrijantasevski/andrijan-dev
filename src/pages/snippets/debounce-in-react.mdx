@@ -1,0 +1,71 @@
+---
+layout: "../../layouts/LayoutBlogSnippets.astro"
+title: Debounce in React
+author: Andrijan Tasevski
+shortDescription: A simple custom hook for debouncing in React with TypeScript
+dateUpdated: 28 Nov, 2022
+---
+
+```typescript
+import { useEffect, useState } from 'react'
+
+function useDebounce<T>(value: T, delay?: number): T {
+  const [debouncedValue, setDebouncedValue] = useState<T>(value)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedValue(value), delay || 500)
+
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [value, delay])
+
+  return debouncedValue
+}
+
+export default useDebounce
+```
+
+## How it works
+
+Every time the dependencies in the useEffect (value and delay) are changed, we create a timeout with a callback function that executes after the delay we specify in the parameter of the useDebounce function. 
+
+If we don't specify a delay value, it defaults to 500ms. 
+
+Everytime the debouncer is triggered, we destroy the previous timeout and create a new one. 
+
+When the callback function in the timeout executes, we change the value of the state with the value provided as an argument in the useDebounce function.
+
+## Implementation
+
+```typescript
+import { useState, useEffect } from "react";
+import useDebounce from "./useDebounce";
+
+const App: React.FC = () => {
+  const [inputValue, setInputValue] = useState("");
+  const debounceValue = useDebounce(inputValue, 700);
+
+  useEffect(() => {
+    // execute fetch
+  }, [debounceValue]);
+
+  return (
+    <div>
+      <input type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+    </div>
+  )
+}
+
+export default App;
+```
+
+## Debounce vs. throttle
+
+When we use debouncing, we always destroy the previous timeout and create a new one after an event (e.g. typing). Then, only when the last timeout is finished does the value update.
+
+When we use throttling, the value is updated every X-amount of milliseconds as we are triggering new events.
+
+## Sources
+
+The hook is taken from [*usehooks-ts*](https://usehooks-ts.com/react-hook/use-debounce).

@@ -3,7 +3,7 @@ layout: "../../layouts/LayoutBlogSnippets.astro"
 title: Unique items in an array
 author: Andrijan Tasevski
 shortDescription: Find unique items in an array with a JavaScript or TypeScript function
-dateUpdated: 17 Oct, 2022
+dateUpdated: 06 Dec, 2022
 id: 5
 ---
 
@@ -50,3 +50,37 @@ We loop through the array we pass as an argument.
 If the **method indexOf** cannot find the index of the current element of the iteration, it will return **-1**. This implies that the element does not exist in the array we are looping through.
 
 This would satisfy our condition and push the item to the **uniqueItems array**.
+
+## Alternative method with filter
+
+```typescript
+function findUniqueElements<T>(arr: T[]) {
+    const uniqueItems = arr.filter((item, index) => arr.indexOf(item) === index);
+
+    return uniqueItems;
+}
+
+findUniqueElements([1, 1, 2, 3]); // Result: [1, 2, 3]
+```
+
+## How it works
+
+We use the filter method to loop through the array we pass as an argument and make a copy of it instead of mutating the original array.
+
+On each iteration, we check if the index of the current element in the array we passed as an argument is the same as the index of the element of the current iteration.
+
+Since the explanation may be a bit confusing, let's take a look at each one of the iterations.
+
+```javascript
+// First iteration
+[LOG]: "item:",  1,  "index":,  0,  "arr.indexOf:",  0 // The condition is satisfied. We are encountering the item for the first time.
+
+// Second iteration
+[LOG]: "item:",  1,  "index":,  1,  "arr.indexOf:",  0 // The condition is not satisfied, since the index of the first element is 0, and the index of the second element is 1. This implies that the element already exists in the array.
+
+// Third iteration
+[LOG]: "item",  2,  "index":,  2,  "arr.indexOf:",  2 // The condition is satisfied.
+
+// Fourth iteration
+[LOG]: "item:",  3,  "index":,  3,  "arr.indexOf:",  3 // The condition is satisfied.
+```
