@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 export default function DarkModeToggler() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") ?? "light");
@@ -15,15 +15,29 @@ export default function DarkModeToggler() {
       document.documentElement.classList.remove("dark");
     }
     localStorage.setItem("theme", theme);
+
+    const css = document.createElement("style");
+    css.type = "text/css";
+    css.appendChild(
+      document.createTextNode(
+        `* {
+       -webkit-transition: none !important;
+       -moz-transition: none !important;
+       -o-transition: none !important;
+       -ms-transition: none !important;
+       transition: none !important;
+    }`
+      )
+    );
+    document.head.appendChild(css);
+
+    const _ = window.getComputedStyle(css).opacity;
+    document.head.removeChild(css);
   }, [theme]);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
-
-  if (!isMounted) {
-    return null;
-  }
 
   return (
     <button
@@ -31,7 +45,7 @@ export default function DarkModeToggler() {
       onClick={toggleDarkMode}
       className="rounded-md border-2 bg-gray-200 p-2 transition-all hover:border-gray-400 focus:border-2 dark:border-gray-800 dark:bg-gray-800 dark:hover:border-gray-700"
     >
-      {theme === "dark" ? (
+      {isMounted && theme === "dark" ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

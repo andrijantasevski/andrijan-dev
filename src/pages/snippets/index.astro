@@ -11,6 +11,6 @@ interface Frontmatter {
 const snippets = await Astro.glob<Frontmatter>("../snippets/*.mdx");
 ---
 
-<Layout title="Snippets">
+<Layout title="Snippets" description="Useful snippets of code and boilerplate that help me be more productive when I am coding.">
     <Snippets snippetsArr={snippets} client:load />
 </Layout>
