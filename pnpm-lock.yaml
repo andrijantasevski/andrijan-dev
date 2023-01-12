@@ -10,6 +10,7 @@ specifiers:
   '@types/node': ^18.8.3
   '@types/react': ^18.0.21
   astro: ^1.9.2
+  astro-seo: ^0.6.1
   prettier: ^2.7.1
   prettier-plugin-tailwindcss: ^0.1.13
   react: ^18.2.0
@@ -24,6 +25,7 @@ dependencies:
   '@astrojs/tailwind': 2.0.2_tailwindcss@3.1.8
   '@types/react': 18.0.25
   astro: 1.9.2_@types+node@18.11.9
+  astro-seo: 0.6.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   tailwindcss: 3.1.8
@@ -903,6 +905,10 @@ packages:
   /astring/1.8.3:
     resolution: {integrity: sha512-sRpyiNrx2dEYIMmUXprS8nlpRg2Drs8m9ElX9vVEXaCB4XEAJhKfs7IcX0IwShjuOAjLR6wzIrgoptz1n19i1A==}
     hasBin: true
+    dev: false
+
+  /astro-seo/0.6.1:
+    resolution: {integrity: sha512-eszmxiycjfLcmoRyB8x5lCrWAwcSHs1i5riR1a5JbyJI8OQAl9tn1JvWFRuZvNH483CFdfNCczirnc805t/soA==}
     dev: false
 
   /astro/1.9.2_@types+node@18.11.9:
