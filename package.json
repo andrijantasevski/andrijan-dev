@@ -11,22 +11,22 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/image": "^0.12.1",
-    "@astrojs/mdx": "^0.11.4",
-    "@astrojs/react": "^1.1.4",
-    "@astrojs/sitemap": "^1.0.0",
-    "@astrojs/tailwind": "^2.0.2",
-    "@types/react": "^18.0.21",
-    "astro": "^1.9.2",
+    "@astrojs/image": "^0.15.1",
+    "@astrojs/mdx": "^0.17.2",
+    "@astrojs/react": "^2.0.2",
+    "@astrojs/sitemap": "^1.1.0",
+    "@astrojs/tailwind": "^3.0.1",
+    "@types/react": "^18.0.28",
+    "astro": "^2.0.16",
     "astro-seo": "^0.6.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tailwindcss": "^3.1.8"
+    "tailwindcss": "^3.2.7"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.3",
-    "@types/node": "^18.8.3",
-    "prettier": "^2.7.1",
+    "@types/node": "^18.14.4",
+    "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.1.13"
   }
 }
