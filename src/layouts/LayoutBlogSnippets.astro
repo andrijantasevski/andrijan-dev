@@ -66,6 +66,18 @@ const { content } = Astro.props;
         --astro-code-token-punctuation: #a6accd;
         --astro-code-token-link: #add7ff;
       }
+
+      pre::-webkit-scrollbar {
+        @apply h-2;
+      }
+
+      pre::-webkit-scrollbar-thumb {
+        @apply rounded-lg bg-gray-300 dark:bg-gray-700;
+      }
+
+      pre {
+        scrollbar-color: #d1d5db transparent;
+      }
     </style>
   </body>
 </html>
