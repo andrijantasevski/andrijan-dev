@@ -1,37 +1,69 @@
 ---
 import ProjectSingle from "./ProjectSingle.astro";
+
+export interface Project {
+  projectTitle: string;
+  technologiesUsed: string;
+  projectDescription: string;
+  projectLink: string;
+  projectGitHub: string;
+  projectImage: string;
+}
+
+export const projects: Project[] = [
+  {
+    projectTitle: "Jadi domashno",
+    technologiesUsed: "Next.js · TypeScript · Tailwind",
+    projectDescription: "A simple e-commerce website for ordering homemade food",
+    projectLink: "https://jadi-domashno.andrijan.dev/",
+    projectGitHub: "https://github.com/andrijantasevski/jadi-domashno",
+    projectImage: "/photos/jadi-domashno.png",
+  },
+  {
+    projectTitle: "Password Generator",
+    technologiesUsed: "TypeScript · React · Tailwind",
+    projectDescription: "A password generator with strength checking",
+    projectLink: "https://password-generator.andrijan.dev/",
+    projectGitHub: "https://github.com/andrijantasevski/password-generator",
+    projectImage: "/photos/password-generator.png",
+  },
+  {
+    projectTitle: "Go Dutch",
+    technologiesUsed: "TypeScript · React · Tailwind",
+    projectDescription: "A tip calculator app to split bills with your friends",
+    projectLink: "https://go-dutch.andrijan.dev/",
+    projectGitHub: "https://github.com/andrijantasevski/go-dutch",
+    projectImage: "/photos/go-dutch.png",
+  },
+  {
+    projectTitle: "Vreeeme",
+    technologiesUsed: "Next.js · Tailwind · React",
+    projectDescription: "A weather app built with Next.js",
+    projectLink: "https://vreme.andrijan.dev/",
+    projectGitHub: "https://github.com/andrijantasevski/vreme",
+    projectImage: "/photos/vreeeme.png",
+  },
+  {
+    projectTitle: "Chitajknigi",
+    technologiesUsed: "Svelte · Tailwind · DaisyUI",
+    projectDescription: "A CRUD app for managing books people have read",
+    projectLink: "https://chitajknigi.andrijan.dev/",
+    projectGitHub: "https://github.com/andrijantasevski/chitajknigi",
+    projectImage: "/photos/chitaj-knigi.png",
+  },
+];
 ---
 
 <section class="py-4 text-gray-900 dark:text-gray-50">
-  <div class="w-11/12 lg:w-7/12 2xl:w-5/12 mx-auto">
+  <div>
     <div class="flex justify-between items-center mb-4">
       <h2 class="text-2xl lg:text-3xl font-bold">Projects</h2>
 
-      <a
-        href="/projects"
-        class="bg-gray-200 dark:bg-gray-800 py-1 px-3 rounded-md transition-all border-2 hover:border-gray-400 dark:border-gray-900 dark:hover:border-gray-700"
-        >All projects</a
-      >
+      <a href="/projects" class="bg-gray-200 dark:bg-gray-800 py-1 px-3 rounded-md transition-all border-2 hover:border-gray-400 dark:border-gray-900 dark:hover:border-gray-700">All projects</a>
     </div>
 
     <div class="grid grid-cols-1 gap-6">
-      <ProjectSingle
-        projectTitle="Go Dutch"
-        technologiesUsed="TypeScript · React · Tailwind"
-        projectDescription="A tip calculator app to split bills with your friends"
-        projectLink="https://go-dutch.andrijan.dev/"
-        projectGitHub="https://github.com/andrijantasevski/go-dutch"
-        projectImage="/photos/go-dutch.png"
-      />
-
-      <ProjectSingle
-        projectTitle="Password Generator"
-        technologiesUsed="TypeScript · React · Tailwind"
-        projectDescription="A password generator with strength checking"
-        projectLink="https://password-generator.andrijan.dev/"
-        projectGitHub="https://github.com/andrijantasevski/password-generator"
-        projectImage="/photos/password-generator.png"
-      />
+      {projects.slice(0, 2).map((project) => <ProjectSingle {...project} />)}
     </div>
   </div>
 </section>

@@ -1,5 +1,7 @@
 ---
-import { Image } from '@astrojs/image/components';
+import { Image } from "@astrojs/image/components";
+import GitHubIcon from "./icons/GitHubIcon.astro";
+
 export interface Props {
   projectTitle: string;
   technologiesUsed: string;
@@ -8,19 +10,10 @@ export interface Props {
   projectGitHub: string;
   projectImage: string;
 }
-const {
-  projectTitle,
-  technologiesUsed,
-  projectDescription,
-  projectLink,
-  projectGitHub,
-  projectImage,
-} = Astro.props;
+const { projectTitle, technologiesUsed, projectDescription, projectLink, projectGitHub, projectImage } = Astro.props;
 ---
 
-<div
-  class="bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 rounded-md p-5 lg:p-6 lg:flex justify-between gap-6"
->
+<div class="bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 rounded-md p-5 lg:p-6 lg:flex justify-between gap-6">
   <div class="flex flex-col justify-between gap-4 lg:w-5/12">
     <div>
       <h3 class="text-xl font-medium">
@@ -36,51 +29,15 @@ const {
       </a>
 
       <div class="flex justify-between items-center">
-        <a
-          href={projectLink}
-          class="bg-gray-200 dark:bg-gray-800 py-1.5 px-3 text-sm rounded-md transition-all border-2 hover:border-gray-400 dark:border-gray-900 dark:hover:border-gray-700"
-          >Discover</a
-        >
-        <a href={projectGitHub} class="dark:hidden">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="21"
-            height="24"
-            fill="none"
-            viewBox="0 0 18 21"
-          >
-            <path
-              stroke="#111827"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
-              d="M6.744 16.932C2.64 18.216 2.64 14.792 1 14.364M12.487 19.5v-3.313a3 3 0 0 0-.155-1.204 2.907 2.907 0 0 0-.616-1.03C14.292 13.653 17 12.634 17 7.96c0-1.195-.44-2.344-1.23-3.21a4.514 4.514 0 0 0-.075-3.227s-.968-.3-3.208 1.267a10.539 10.539 0 0 0-5.743 0c-2.24-1.567-3.209-1.267-3.209-1.267a4.515 4.515 0 0 0-.073 3.227A4.768 4.768 0 0 0 2.23 7.986c0 4.64 2.707 5.659 5.284 5.993a2.9 2.9 0 0 0-.611 1.018 3 3 0 0 0-.16 1.19V19.5"
-            ></path>
-          </svg>
-        </a>
-
-        <a href={projectGitHub} class="hidden dark:block">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="21"
-            height="24"
-            fill="none"
-            viewBox="0 0 18 21"
-          >
-            <path
-              stroke="#F9FAFB"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
-              d="M6.744 16.932C2.64 18.216 2.64 14.792 1 14.364M12.487 19.5v-3.313a3 3 0 0 0-.155-1.204 2.907 2.907 0 0 0-.616-1.03C14.292 13.653 17 12.634 17 7.96c0-1.195-.44-2.344-1.23-3.21a4.514 4.514 0 0 0-.075-3.227s-.968-.3-3.208 1.267a10.539 10.539 0 0 0-5.743 0c-2.24-1.567-3.209-1.267-3.209-1.267a4.515 4.515 0 0 0-.073 3.227A4.768 4.768 0 0 0 2.23 7.986c0 4.64 2.707 5.659 5.284 5.993a2.9 2.9 0 0 0-.611 1.018 3 3 0 0 0-.16 1.19V19.5"
-            ></path>
-          </svg>
+        <a aria-label={`Discover ${projectTitle}`} href={projectLink} class="bg-gray-200 dark:bg-gray-800 py-1.5 px-3 text-sm rounded-md transition-all border-2 hover:border-gray-400 dark:border-gray-900 dark:hover:border-gray-700">Discover</a>
+        <a aria-label={`Discover ${projectTitle} on GitHub`} href={projectGitHub} title={`Open ${projectTitle} on GitHub`}>
+          <GitHubIcon class="w-5 h-5 text-gray-900 dark:text-gray-50" />
         </a>
       </div>
     </div>
   </div>
 
   <a class="hidden lg:block lg:w-7/12" href={projectLink}>
-    <Image class="rounded-md w-full" src={projectImage} alt={projectTitle} width={500} aspectRatio={16/9} format={"webp"}  />
+    <Image class="rounded-md w-full" src={projectImage} alt={projectTitle} width={500} height={300} format={"webp"} />
   </a>
 </div>

@@ -1,0 +1,11 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+export interface Props extends HTMLAttributes<"svg"> {}
+
+const props = Astro.props;
+---
+
+<svg {...props} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 21">
+  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.744 16.932C2.64 18.216 2.64 14.792 1 14.364M12.487 19.5v-3.313a3 3 0 0 0-.155-1.204 2.907 2.907 0 0 0-.616-1.03C14.292 13.653 17 12.634 17 7.96c0-1.195-.44-2.344-1.23-3.21a4.514 4.514 0 0 0-.075-3.227s-.968-.3-3.208 1.267a10.539 10.539 0 0 0-5.743 0c-2.24-1.567-3.209-1.267-3.209-1.267a4.515 4.515 0 0 0-.073 3.227A4.768 4.768 0 0 0 2.23 7.986c0 4.64 2.707 5.659 5.284 5.993a2.9 2.9 0 0 0-.611 1.018 3 3 0 0 0-.16 1.19V19.5"></path>
+</svg>
