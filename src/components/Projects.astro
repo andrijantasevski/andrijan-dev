@@ -55,15 +55,13 @@ export const projects: Project[] = [
 ---
 
 <section class="py-4 text-gray-900 dark:text-gray-50">
-  <div>
-    <div class="flex justify-between items-center mb-4">
-      <h2 class="text-2xl lg:text-3xl font-bold">Projects</h2>
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-2xl lg:text-3xl font-bold">Projects</h2>
 
-      <a href="/projects" class="bg-gray-200 dark:bg-gray-800 py-1 px-3 rounded-md transition-all border-2 hover:border-gray-400 dark:border-gray-900 dark:hover:border-gray-700">All projects</a>
-    </div>
+    <a href="/projects" class="bg-gray-200 dark:bg-gray-800 py-1 px-3 rounded-md transition-all border-2 hover:border-gray-400 dark:border-gray-900 dark:hover:border-gray-700">All projects</a>
+  </div>
 
-    <div class="grid grid-cols-1 gap-6">
-      {projects.slice(0, 2).map((project) => <ProjectSingle {...project} />)}
-    </div>
+  <div class="grid grid-cols-1 gap-6">
+    {projects.slice(0, 2).map((project) => <ProjectSingle {...project} />)}
   </div>
 </section>
