@@ -2,35 +2,21 @@
 import BlogCard from "./BlogCard.astro";
 
 const posts = await Astro.glob("../pages/blog/*.mdx");
-const sortedPosts = posts
-  .filter((post) => !post.frontmatter.draft)
-  .sort(
-    (a, b) =>
-      new Date(b.frontmatter.dateUpdated).valueOf() -
-      new Date(a.frontmatter.dateUpdated).valueOf()
-  );
+const sortedPosts = posts.filter((post) => !post.frontmatter.draft).sort((a, b) => new Date(b.frontmatter.dateUpdated).valueOf() - new Date(a.frontmatter.dateUpdated).valueOf());
 ---
 
 <section class="py-4 text-gray-900 dark:text-gray-50">
-  <div>
-    <div class="flex justify-between items-center mb-4">
-      <h2 class="text-2xl lg:text-3xl font-bold">Blog</h2>
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-2xl lg:text-3xl font-bold">Blog</h2>
 
-      <a
-        href="/blog"
-        class="bg-gray-200 dark:bg-gray-800 py-1 px-3 rounded-md transition-all border-2 hover:border-gray-400 dark:border-gray-900 dark:hover:border-gray-700"
-        >All posts</a
-      >
-    </div>
+    <a href="/blog" class="bg-gray-200 dark:bg-gray-800 py-1 px-3 rounded-md transition-all border-2 hover:border-gray-400 dark:border-gray-900 dark:hover:border-gray-700">All posts</a>
+  </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      {
-        sortedPosts.map((post) => {
-          return (
-            <BlogCard blogLink={post.url} blogTitle={post.frontmatter.title} />
-          );
-        })
-      }
-    </div>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    {
+      sortedPosts.map((post) => {
+        return <BlogCard blogLink={post.url} blogTitle={post.frontmatter.title} />;
+      })
+    }
   </div>
 </section>
