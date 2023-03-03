@@ -1,6 +1,7 @@
 ---
 import { Image } from "@astrojs/image/components";
 import GitHubIcon from "./icons/GitHubIcon.astro";
+
 export interface Props {
   projectTitle: string;
   technologiesUsed: string;
@@ -29,7 +30,7 @@ const { projectTitle, technologiesUsed, projectDescription, projectLink, project
 
       <div class="flex justify-between items-center">
         <a aria-label={`Discover ${projectTitle}`} href={projectLink} class="bg-gray-200 dark:bg-gray-800 py-1.5 px-3 text-sm rounded-md transition-all border-2 hover:border-gray-400 dark:border-gray-900 dark:hover:border-gray-700">Discover</a>
-        <a aria-label={`Discover ${projectTitle} on GitHub`} href={projectGitHub}>
+        <a aria-label={`Discover ${projectTitle} on GitHub`} href={projectGitHub} title={`Open ${projectTitle} on GitHub`}>
           <GitHubIcon class="w-5 h-5 text-gray-900 dark:text-gray-50" />
         </a>
       </div>
@@ -37,6 +38,6 @@ const { projectTitle, technologiesUsed, projectDescription, projectLink, project
   </div>
 
   <a class="hidden lg:block lg:w-7/12" href={projectLink}>
-    <Image class="rounded-md w-full" src={projectImage} alt={projectTitle} width={500} height={300} aspectRatio="16:9" format={"webp"} />
+    <Image class="rounded-md w-full" src={projectImage} alt={projectTitle} width={500} height={300} format={"webp"} />
   </a>
 </div>
