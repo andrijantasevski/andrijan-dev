@@ -67,6 +67,18 @@ const { content } = Astro.props;
         --astro-code-token-link: #add7ff;
       }
 
+      body::-webkit-scrollbar {
+        @apply w-2;
+      }
+
+      body::-webkit-scrollbar-thumb {
+        @apply rounded-lg bg-gray-300 dark:bg-gray-700;
+      }
+
+      body {
+        scrollbar-color: #d1d5db transparent;
+      }
+
       pre::-webkit-scrollbar {
         @apply h-2;
       }

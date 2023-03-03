@@ -23,7 +23,7 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="author" content="Andrijan Tasevski" />
-    <SEO title={title} description={description} twitter={{ creator: "@_andrijan"}}  />
+    <SEO title={title} description={description} twitter={{ creator: "@_andrijan" }} />
     <title>{title}</title>
     <Fonts />
     <Scripts />
@@ -35,5 +35,18 @@ const { title, description } = Astro.props;
       <slot />
     </main>
     <Footer />
+    <style>
+      body::-webkit-scrollbar {
+        @apply w-2;
+      }
+
+      body::-webkit-scrollbar-thumb {
+        @apply rounded-lg bg-gray-300 dark:bg-gray-700;
+      }
+
+      body {
+        scrollbar-color: #d1d5db transparent;
+      }
+    </style>
   </body>
 </html>
