@@ -1,55 +1,18 @@
 ---
 import ProjectSingle from "../../components/ProjectSingle.astro";
 import Layout from "../../layouts/Layout.astro";
+import { projects } from "../../components/Projects.astro";
 ---
 
 <Layout title="Projects" description="All the projects I have built by using bleeding edge technologies.">
   <section class="py-4 text-gray-900 dark:text-gray-50">
-    <div class="w-11/12 lg:w-7/12 2xl:w-5/12 mx-auto">
-      <div class="mb-6">
-        <h2 class="text-2xl lg:text-3xl font-bold mb-3">Projects</h2>
-        <p>
-          All the projects I have built by using bleeding edge technologies.
-        </p>
-      </div>
+    <div class="mb-6">
+      <h2 class="text-2xl lg:text-3xl font-bold mb-3">Projects</h2>
+      <p>All the projects I have built by using bleeding edge technologies.</p>
+    </div>
 
-      <div class="grid grid-cols-1 gap-6">
-        <ProjectSingle
-          projectTitle="Go Dutch"
-          technologiesUsed="TypeScript · React · Tailwind"
-          projectDescription="A tip calculator app to split bills with your friends"
-          projectLink="https://go-dutch.andrijan.dev/"
-          projectGitHub="https://github.com/andrijantasevski/go-dutch"
-          projectImage="/photos/go-dutch.png"
-        />
-
-        <ProjectSingle
-          projectTitle="Password Generator"
-          technologiesUsed="TypeScript · React · Tailwind"
-          projectDescription="A password generator with strength checking"
-          projectLink="https://password-generator.andrijan.dev/"
-          projectGitHub="https://github.com/andrijantasevski/password-generator"
-          projectImage="/photos/password-generator.png"
-        />
-
-        <ProjectSingle
-          projectTitle="Vreeeme"
-          technologiesUsed="Next.js · Tailwind · React"
-          projectDescription="A weather app built with Next.js"
-          projectLink="https://vreme.andrijan.dev/"
-          projectGitHub="https://github.com/andrijantasevski/vreme"
-          projectImage="/photos/vreeeme.png"
-        />
-
-        <ProjectSingle
-          projectTitle="Chitajknigi"
-          technologiesUsed="Svelte · Tailwind · DaisyUI"
-          projectDescription="A CRUD app for managing books people have read"
-          projectLink="https://chitajknigi.andrijan.dev/"
-          projectGitHub="https://github.com/andrijantasevski/chitajknigi"
-          projectImage="/photos/chitaj-knigi.png"
-        />
-      </div>
+    <div class="grid grid-cols-1 gap-6">
+      {projects.map((project) => <ProjectSingle {...project} />)}
     </div>
   </section>
 </Layout>
