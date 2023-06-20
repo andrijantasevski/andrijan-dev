@@ -14,7 +14,7 @@ const sortedPosts = posts.filter((post) => !post.frontmatter.draft).sort((a, b) 
 
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
     {
-      sortedPosts.map((post) => {
+      sortedPosts.slice(0,3).map((post) => {
         return <BlogCard blogLink={post.url} blogTitle={post.frontmatter.title} />;
       })
     }
