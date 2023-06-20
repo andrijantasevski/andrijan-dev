@@ -1,0 +1,9 @@
+{
+  "title": "Hackathons platform",
+  "technologiesUsed": "Next.js · Tailwind · React",
+  "description": "An app for creating and managing hackathons",
+  "link": "https://hackathons-platform-dev.vercel.app/",
+  "github": "https://github.com/andrijantasevski/hackathons-platform",
+  "image": "/photos/projects/hackathons-platform.jpg",
+  "highlighted": true
+}

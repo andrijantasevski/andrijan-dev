@@ -1,0 +1,8 @@
+{
+  "title": "Go Dutch",
+  "technologiesUsed": "TypeScript · React · Tailwind",
+  "description": "A tip calculator app to split bills with your friends",
+  "link": "https://go-dutch.andrijan.dev/",
+  "github": "https://github.com/andrijantasevski/go-dutch",
+  "image": "/photos/projects/go-dutch.jpg"
+}

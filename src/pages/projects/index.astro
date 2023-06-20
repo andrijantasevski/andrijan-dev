@@ -1,7 +1,9 @@
 ---
 import ProjectSingle from "../../components/ProjectSingle.astro";
 import Layout from "../../layouts/Layout.astro";
-import { projects } from "../../components/Projects.astro";
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
 ---
 
 <Layout title="Projects" description="All the projects I have built by using bleeding edge technologies.">
@@ -12,7 +14,7 @@ import { projects } from "../../components/Projects.astro";
     </div>
 
     <div class="grid grid-cols-1 gap-6">
-      {projects.map((project) => <ProjectSingle {...project} />)}
+      {projects.map((project) => <ProjectSingle project={project} />)}
     </div>
   </section>
 </Layout>

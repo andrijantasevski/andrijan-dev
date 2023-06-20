@@ -1,0 +1,8 @@
+{
+  "title": "Vreeeme",
+  "technologiesUsed": "Next.js · Tailwind · React",
+  "description": "A weather app built with Next.js",
+  "link": "https://vreme.andrijan.dev/",
+  "github": "https://github.com/andrijantasevski/vreme",
+  "image": "/photos/projects/vreeeme.jpg"
+}

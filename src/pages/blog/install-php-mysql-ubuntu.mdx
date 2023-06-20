@@ -1,0 +1,279 @@
+---
+layout: "../../layouts/LayoutBlogSnippets.astro"
+title: Install PHP and MySQL on Ubuntu 22.04
+author: Andrijan Tasevski
+shortDescription: A guide for installing PHP and MySQL on Ubuntu 22.04.
+dateUpdated: 20 Jun, 2023
+---
+
+As mentioned in the title itself, we will assume that our OS is Ubuntu 22.04.
+
+## Installing PHP
+
+To install PHP, we open the Terminal and install all the newest updates.
+
+We run the following commands:
+
+```bash
+$ sudo apt update
+
+$ sudo apt upgrade
+```
+
+Then, to install PHP, we run the command below:
+
+```bash
+$ sudo apt install --no-install-recommends php8.1
+```
+
+> We need the **--no-install-recommends flag**, so we can install only PHP.
+
+After the installation has finished, we can check whether PHP has been installed successfully by running:
+
+```bash
+$ php -v
+
+# We should get a similar output after running the command
+
+PHP 8.1.2-1ubuntu2.11 (cli) (built: Feb 22 2023 22:56:18) (NTS)
+Copyright (c) The PHP Group
+Zend Engine v4.1.2, Copyright (c) Zend Technologies
+    with Zend OPcache v8.1.2-1ubuntu2.11, Copyright (c), by Zend Technologies
+```
+
+## Installing MySQL
+
+Before we install MySQL, we try installing the newest updates again.
+
+We run the following commands:
+
+```bash
+$ sudo apt update
+
+$ sudo apt upgrade
+```
+
+Then, we install MySQL by running the command below:
+
+```bash
+$ sudo apt install mysql-server
+```
+
+To ensure that MySQL is running on our server, we run the following:
+
+```bash
+$ sudo systemctl start mysql.service
+
+# Then we check the status
+
+$ sudo systemctl status mysql.service
+
+Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset: enabled)
+     Active: active (running) since Wed 2023-06-21 00:39:25 CEST; 3min 7s ago
+    Process: 66292 ExecStartPre=/usr/share/mysql/mysql-systemd-start pre (code=exited, status=0/SUCCESS)
+   Main PID: 66300 (mysqld)
+     Status: "Server is operational"
+      Tasks: 37 (limit: 18931)
+     Memory: 365.3M
+        CPU: 883ms
+     CGroup: /system.slice/mysql.service
+             └─66300 /usr/sbin/mysqld
+```
+
+Next, we have to login to MySQL and change the authentication method (password-based) for the root user:
+
+```bash
+# When we first run the command, we should not be prompted to enter a password.
+
+$ sudo mysql
+
+$ alter user 'root'@'localhost' identified with mysql_native_password by 'password';
+
+# After executing the command above, we should get this output:
+
+Query OK, 0 rows affected (0,00 sec)
+
+# We exit MySQL
+
+mysql> exit
+```
+
+In the next step, we have to run a script that makes sure our installation of MySQL is secure.
+
+```bash
+$ mysql_secure_installation
+
+# We are prompted to enter the password we previously entered:
+
+Securing the MySQL server deployment.
+
+Enter password for user root:
+
+# We select yes.
+
+VALIDATE PASSWORD COMPONENT can be used to test passwords
+and improve security. It checks the strength of password
+and allows the users to set only those passwords which are
+secure enough. Would you like to setup VALIDATE PASSWORD component?
+
+Press y|Y for Yes, any other key for No:
+
+# We select 0 in this case, but in production we would select 2.
+
+LOW    Length >= 8
+MEDIUM Length >= 8, numeric, mixed case, and special characters
+STRONG Length >= 8, numeric, mixed case, special characters and dictionary                  file
+
+Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 0
+
+# We do not change the password we entered for root, so we press any key on the keyboard.
+
+Using existing password for root.
+
+Estimated strength of the password: 50
+Change the password for root ? ((Press y|Y for Yes, any other key for No) :
+
+ ... skipping.
+
+# We select yes.
+
+By default, a MySQL installation has an anonymous user,
+allowing anyone to log into MySQL without having to have
+a user account created for them. This is intended only for
+testing, and to make the installation go a bit smoother.
+You should remove them before moving into a production
+environment.
+
+Remove anonymous users? (Press y|Y for Yes, any other key for No) : y
+Success.
+
+# We select yes again.
+
+Normally, root should only be allowed to connect from
+'localhost'. This ensures that someone cannot guess at
+the root password from the network.
+
+Disallow root login remotely? (Press y|Y for Yes, any other key for No) : y
+Success.
+
+# And we select yes again.
+
+Remove test database and access to it? (Press y|Y for Yes, any other key for No) : y
+ - Dropping test database...
+Success.
+
+ - Removing privileges on test database...
+Success.
+
+# Finally, we select yes.
+
+Reloading the privilege tables will ensure that all changes
+made so far will take effect immediately.
+
+Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
+Success.
+
+All done!
+```
+
+Now if we try logging in again like we did at the beginning, we will get an error:
+
+```bash
+$ sudo mysql
+
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
+```
+
+This tells us that we have to log in to our database with a password. So, let's do that:
+
+```bash
+# The -u flag is for the user and the -p flag is for password
+
+$ mysql -u root -p
+
+# We enter our password
+
+Enter password:
+
+# We have successfully logged in as root!
+
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 16
+Server version: 8.0.33-0ubuntu0.22.04.2 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql>
+```
+
+### Creating a database
+
+To create a database, we run this command:
+
+```bash
+mysql> create table exampleDB;
+
+# Then we check all our databases:
+
+mysql> show schemas;
+
++--------------------+
+| Database           |
++--------------------+
+| exampleDB          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0,00 sec)
+```
+
+### Creating a user and granting privileges
+
+To create a user, we run the following command:
+
+```bash
+mysql> create user 'andrijan'@'localhost' identified with mysql_native_password by 'password';
+
+Query OK, 0 rows affected (0,01 sec)
+
+# We then use the mysql database:
+
+mysql> use mysql;
+
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+
+# We show all the users from the user table:
+
++------------------+
+| user             |
++------------------+
+| andrijan         |
+| debian-sys-maint |
+| mysql.infoschema |
+| mysql.session    |
+| mysql.sys        |
+| root             |
++------------------+
+6 rows in set (0,00 sec)
+```
+
+To grant all privileges to the newly created user on our example database, we can run:
+
+```bash
+mysql> grant all on exampleDB.* to 'andrijan'@'localhost';
+
+# Upon a successful granting of privileges, we should get this output:
+
+Query OK, 0 rows affected (0,00 sec)
+```

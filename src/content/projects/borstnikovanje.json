@@ -1,0 +1,9 @@
+{
+  "title": "Borštnikovanje",
+  "technologiesUsed": "Astro · TypeScript · React",
+  "description": "A marketing site for a theater festival",
+  "link": "https://borstnikovanje.si/",
+  "github": "https://github.com/borstnikovanje/borstnikovanje.si",
+  "image": "/photos/projects/borstnikovanje.jpg",
+  "highlighted": true
+}
