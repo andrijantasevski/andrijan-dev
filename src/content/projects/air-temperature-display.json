@@ -1,0 +1,8 @@
+{
+  "title": "Air temperature display",
+  "technologiesUsed": "TypeScript · React · TailwindCSS",
+  "description": "A dashboard for adding and viewing weather data",
+  "link": "https://air-temperature-display.andrijan.dev/",
+  "github": "https://github.com/andrijantasevski/air-temperature-display",
+  "image": "/photos/projects/air-temperature-display.jpg"
+}
