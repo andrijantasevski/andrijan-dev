@@ -9,7 +9,7 @@ id: 6
 
 ## Copying arrays
 
-```javascript 
+```javascript
 const arr = [1, 2, 3, 4, 5];
 
 // Copying with the spread operator
@@ -45,17 +45,17 @@ const copySix = JSON.parse(JSON.stringify(arr));
 
 ```javascript
 const obj = {
-	name: John,
-	lastName: Doe
+  name: John,
+  lastName: Doe,
 };
 
 // Copying with the spread operator
 
-const copyOne = {...obj};
+const copyOne = { ...obj };
 
 // Copying with Object.assign()
 
-const copyTwo = Object.assign({}, obj)
+const copyTwo = Object.assign({}, obj);
 
 // Copying with JSON.stringify() and JSON.parse()
 
