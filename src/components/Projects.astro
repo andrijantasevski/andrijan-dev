@@ -1,57 +1,8 @@
 ---
 import ProjectSingle from "./ProjectSingle.astro";
+import { getCollection } from "astro:content";
 
-export interface Project {
-  projectTitle: string;
-  technologiesUsed: string;
-  projectDescription: string;
-  projectLink: string;
-  projectGitHub: string;
-  projectImage: string;
-}
-
-export const projects: Project[] = [
-  {
-    projectTitle: "Jadi domashno",
-    technologiesUsed: "Next.js · TypeScript · Tailwind",
-    projectDescription: "A simple e-commerce website for ordering homemade food",
-    projectLink: "https://jadi-domashno.andrijan.dev/",
-    projectGitHub: "https://github.com/andrijantasevski/jadi-domashno",
-    projectImage: "/photos/jadi-domashno.png",
-  },
-  {
-    projectTitle: "Password Generator",
-    technologiesUsed: "TypeScript · React · Tailwind",
-    projectDescription: "A password generator with strength checking",
-    projectLink: "https://password-generator.andrijan.dev/",
-    projectGitHub: "https://github.com/andrijantasevski/password-generator",
-    projectImage: "/photos/password-generator.png",
-  },
-  {
-    projectTitle: "Go Dutch",
-    technologiesUsed: "TypeScript · React · Tailwind",
-    projectDescription: "A tip calculator app to split bills with your friends",
-    projectLink: "https://go-dutch.andrijan.dev/",
-    projectGitHub: "https://github.com/andrijantasevski/go-dutch",
-    projectImage: "/photos/go-dutch.png",
-  },
-  {
-    projectTitle: "Vreeeme",
-    technologiesUsed: "Next.js · Tailwind · React",
-    projectDescription: "A weather app built with Next.js",
-    projectLink: "https://vreme.andrijan.dev/",
-    projectGitHub: "https://github.com/andrijantasevski/vreme",
-    projectImage: "/photos/vreeeme.png",
-  },
-  {
-    projectTitle: "Chitajknigi",
-    technologiesUsed: "Svelte · Tailwind · DaisyUI",
-    projectDescription: "A CRUD app for managing books people have read",
-    projectLink: "https://chitajknigi.andrijan.dev/",
-    projectGitHub: "https://github.com/andrijantasevski/chitajknigi",
-    projectImage: "/photos/chitaj-knigi.png",
-  },
-];
+const projects = await getCollection("projects");
 ---
 
 <section class="py-4 text-gray-900 dark:text-gray-50">
@@ -62,6 +13,6 @@ export const projects: Project[] = [
   </div>
 
   <div class="grid grid-cols-1 gap-6">
-    {projects.slice(0, 2).map((project) => <ProjectSingle {...project} />)}
+    {projects.filter(project => project.data.highlighted).slice(0, 2).map((project) => <ProjectSingle project={project} />)}
   </div>
 </section>

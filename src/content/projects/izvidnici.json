@@ -1,0 +1,8 @@
+{
+  "title": "Izvidnici",
+  "technologiesUsed": "Next.js · Tailwind · React",
+  "description": "A marketing site for scouts in North Macedonia",
+  "link": "https://izvidnici-mk.vercel.app/",
+  "github": "https://github.com/andrijantasevski/izvidnici.mk",
+  "image": "/photos/projects/izvidnici.jpg"
+}

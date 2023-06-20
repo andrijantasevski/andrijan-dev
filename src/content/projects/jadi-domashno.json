@@ -1,0 +1,8 @@
+{
+  "title": "Jadi domashno",
+  "technologiesUsed": "Next.js · TypeScript · Tailwind",
+  "description": "A simple e-commerce website for ordering homemade food",
+  "link": "https://jadi-domashno.andrijan.dev/",
+  "github": "https://github.com/andrijantasevski/jadi-domashno",
+  "image": "/photos/projects/jadi-domashno.jpg"
+}

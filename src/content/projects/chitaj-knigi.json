@@ -1,0 +1,8 @@
+{
+  "title": "Chitajknigi",
+  "technologiesUsed": "Svelte · Tailwind · DaisyUI",
+  "description": "A CRUD app for managing books people have read",
+  "link": "https://chitajknigi.andrijan.dev/",
+  "github": "https://github.com/andrijantasevski/chitajknigi",
+  "image": "/photos/projects/chitaj-knigi.jpg"
+}
