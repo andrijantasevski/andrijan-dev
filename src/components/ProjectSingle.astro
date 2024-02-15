@@ -1,5 +1,5 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets"
 import GitHubIcon from "./icons/GitHubIcon.astro";
 import type { CollectionEntry } from "astro:content";
 
@@ -34,6 +34,6 @@ const { project } = Astro.props;
   </div>
 
   <a class="hidden lg:block lg:w-7/12" href={project.data.link}>
-    <Image class="rounded-md w-full" src={project.data.image} alt={project.data.title} width={500} height={300} format={"jpeg"} />
+    <Image class="rounded-md w-full" src={project.data.image} alt={project.data.title} width={500} height={300} format={"jpeg"} fetchpriority="high" />
   </a>
 </div>

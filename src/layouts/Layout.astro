@@ -16,26 +16,46 @@ export interface Props {
 const { title, description } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="author" content="Andrijan Tasevski" />
-    <SEO title={title} description={description} twitter={{ creator: "@_andrijan" }} />
-    <title>{title}</title>
     <Fonts />
+    <SEO
+      title={title}
+      description={description}
+      twitter={{ creator: "@_andrijan" }}
+    />
+    <title>{title}</title>
     <Scripts />
     <Favicon />
   </head>
-  <body class="dark:bg-gray-900 min-h-screen flex flex-col max-w-2xl mx-auto w-11/12">
+  <body
+    class="dark:bg-gray-900 min-h-screen flex flex-col max-w-2xl mx-auto w-11/12"
+  >
     <Header />
     <main>
       <slot />
     </main>
     <Footer />
-    <style>
+
+    <style is:global>
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 300 900;
+        font-display: swap;
+        src: url("/fonts/inter-variable.woff2")
+          format("woff2-variations");
+      }
+
+      html {
+        font-family: "Inter", sans-serif;
+      }
+
       body::-webkit-scrollbar {
         @apply w-2;
       }
